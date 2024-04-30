@@ -34,7 +34,8 @@
                         <td>{{ $item->ciudad }}</td>
                          <td>
                             <form action="{{url("edit")}}" method="GET">
-                                <input type="hidden" name="id" value="{{$item->id}}">                                <button class="btn btn-warning btn-sm">
+                                <input type="hidden" name="id" value="{{$item->id}}">
+                                <button class="btn btn-warning btn-sm">
                                     Editar
                                 </button>
                             </form>

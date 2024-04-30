@@ -49,9 +49,9 @@ class PersonasController extends Controller
     //Muestra los datos a editar
     public function edit()
     {
-        // DD($_GET);
-        // $persona = Personas::find();
-        // return view("actualizar", compact('personas'));
+        extract($_GET);
+        $personas = DB::table('personas')->where("idpersona",$id)->get();
+        return view("actualizar", compact('personas'));
     }
     //Actualiza los datos
     public function update($id)
