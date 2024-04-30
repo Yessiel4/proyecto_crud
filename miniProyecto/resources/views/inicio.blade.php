@@ -17,6 +17,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Fecha de nacimiento</th>
+                    <th>País</th>
                     <th>Departamento</th>
                     <th>Ciudad</th>
                     <th>Editar</th>
@@ -28,23 +29,23 @@
                         <td>{{ $item->nombre }}</td>
                         <td>{{ $item->apellido }}</td>
                         <td>{{ $item->fecha_nacimiento }}</td>
+                        <td>{{ $item->pais}}</td>
                         <td>{{ $item->departamento }}</td>
                         <td>{{ $item->ciudad }}</td>
-                        <td>
-                            <form action="{{url("personas.edit", $item->id)}}" method="GET">
-                                <button class="btn btn-warning btn-sm">
+                         <td>
+                            <form action="{{url("edit")}}" method="GET">
+                                <input type="hidden" name="id" value="{{$item->id}}">                                <button class="btn btn-warning btn-sm">
                                     Editar
                                 </button>
                             </form>
                             <td>
-                                <form action="{{url("personas.show", $item->id) }}" method="get">
+                                <form action="{{url("show", $item->id) }}" method="GET">
                                     <button class="btn btn-danger btn-sm">
                                         Eliminar
                                     </button>
                                 </form>
                             </td>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>

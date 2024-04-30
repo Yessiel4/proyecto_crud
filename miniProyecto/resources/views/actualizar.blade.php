@@ -7,7 +7,7 @@
         <div class="card-body">
 
             <p class="card-text">
-                <form action="{{ route('personas.update',$personas->id) }}" method="GET">
+                <form action="{{route('personas.update',$personas->id) }}" method="GET">
                     @csrf
                     <label for="">Nombre</label>
                     <input type="text" name="nombre" class="form-control" required value="{{ $personas->nombre }}">
@@ -15,8 +15,26 @@
                     <input type="text" name="apellido" class="form-control" required value="{{ $personas->apellido }}">
                     <label for="">fecha de nacimiento</label>
                     <input type="date" name="fecha_nacimiento" class="form-control" required value="{{ $personas->fecha_nacimiento }}">
+                    <label for="">País</label>
+                    <select name="pais" id="pais" class="form-select" aria-label="Default select example" required>
+                        <option value="colombia">Colombia</option>
+                        <option value="venezuela">Venezuela</option>
+                    </select>
+                    <label id="departamento" for="">Departamento</label>
+                    <select name="departamento" id="departamentoS" class="form-select" aria-label="Default select example">
+                        <option value="">Seleccione...</option>
+                        @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->iddepto}}">{{$departamento->nombre}}</option>
+                        @endforeach
+                    </select>
+                    <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" id="url-ciudad" value="{{url('ciudad')}}">
+                    <label id="ciudad" for="">Ciudad</label>
+                    <select name="ciudad" id="ciudadS" class="form-select" aria-label="Default select example">
+                        <option value="">Seleccione...</option>
+                    </select>
                     <br>
-                    <a href="{{ route("personas.index") }}" class="btn btn-secondary">Regresar</a>
+                    <a href="{{route("personas.index")}}" class="btn btn-secondary">Regresar</a>
                     <button class="btn btn-success">Actualizar</button>
                 </form>
             </p>
