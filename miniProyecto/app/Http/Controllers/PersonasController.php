@@ -29,22 +29,15 @@ class PersonasController extends Controller
         DB::table('personas')->insert([
             "nombre" =>  $nombre, "apellido" => $apellido, "fecha_nacimiento"=>$fecha_nacimiento,"pais"=>$pais,"departamento"=>$departamento,"ciudad"=>$ciudad
         ]);
-        return redirect()-> route("inicio");
+        return $this->index();
     }
-
-    // Muestra los datos que serán eliminados
-    public function show($id)
+    //Elimina los registros
+    public function destroy()
     {
+        extract($_GET);
+        DB::table('personas')->where('idpersona','=',$id)->delete();
 
-        // $personas = Personas::find($id);
-        return view("eliminar");
-    }
-    // Elimina los datos
-    public function destroy($id)
-    {
-        $personas = Personas::find($id);
-        $personas->delete();
-        return redirect()->route("personas.index")->with("success","Eliminación exitosa");
+        return $this->index();
     }
     //Muestra los datos a editar
     public function edit()
